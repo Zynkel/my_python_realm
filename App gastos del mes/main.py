@@ -160,6 +160,15 @@ class Application(ttk.Frame):
                 self.totalGastos = self.totalGastos - int(cantidad)
                 campoTotalGastos.config(text = str(self.totalGastos) + "€")
 
+        self.actualizarBalance()
+
+    def actualizarBalance(self):
+        #Obtener el parámetro "text" del label, se le quita el € para que sea solo numérico y se hace el balance.
+        gastos = int(str.replace(campoTotalGastos["text"], "€",""))
+        ingresos = int(str.replace(campoTotalIngresos["text"], "€",""))
+
+        balance = ingresos - gastos
+        campoBalance.config(text=str(balance) + "€")
         
 
     def cleanFields(self):
